@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <!-- 1、输出日志路径、所有日志输出到一个文件配置 -->
+    <property name="log_path" value="d:/log/springboot-demo"/>
+
+    <!-- 2、输出格式1-控制台格式：1、%d 表示日期; 2、%thread 表示线程名; 3、%-5level 表示级别从左显示5个字符宽度; 4、%msg 表示日志消息; 5、%n 是换行符; 6、%logger{50} 表示logger名字最长50个字符，否则按照句点分割。-->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss.SSS} | %highlight(%-5level) | %boldYellow(%thread) | %boldGreen(%logger){50} | %msg%n"/>
+    <!-- 输出格式2-文件格式 -->
+    <property name="FILE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %thread | %logger{50} | %msg%n"/>
+
+    <!-- 3、输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 4、输出到文件-->
+    <appender name="file-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_path}/logfile.log</file>
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/logs/%d{yyyy-MM-dd}.log_%i.log</fileNamePattern>
+            <!-- 保存30天 -->
+            <maxHistory>30</maxHistory>
+            <!-- 日志最大1GB -->
+            <totalSizeCap>1GB</totalSizeCap>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!--文件达到 最大128MB时会被压缩和切割-->
+                <maxFileSize>128MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <!-- 日志输出格式 -->
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 5、mybatis sql日志 日志的级别需要是DEBUG-->
+    <!--日志打印的包的范围，及分类日志文件存储 -->
+    <logger name="com.cicoding" level="DEBUG" additivity="false"></logger>
+
+    <!-- 6、日志级别 -->
+    <root level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file-log"/>
+    </root>
+</configuration>

@@ -1,2 +1,2 @@
 logging:
-  level: trace
+  config: classpath:logback-one-file.xml

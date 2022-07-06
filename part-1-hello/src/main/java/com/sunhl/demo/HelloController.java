@@ -14,7 +14,7 @@ import org.yaml.snakeyaml.constructor.BaseConstructor;
  * @Desc:
  */
 @RestController
-@RequestMapping("/part-1")
+@RequestMapping("/api/part-1")
 public class HelloController extends BaseConstructor {
 
     private static final Logger log = LoggerFactory.getLogger(HelloController.class);
