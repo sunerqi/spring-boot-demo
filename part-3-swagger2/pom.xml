@@ -9,20 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>part-1-hello</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.sunhl</groupId>
-            <artifactId>part-2-logback</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sunhl</groupId>
-            <artifactId>part-3-swagger2</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
+    <artifactId>part-3-swagger2</artifactId>
 
 </project>
