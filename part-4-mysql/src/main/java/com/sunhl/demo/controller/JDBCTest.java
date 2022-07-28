@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author: sunhailong
- * @Date: 2022/7/11 11:20
- * @Desc:
+ * @author: sunhailong
+ * @date: 2022/7/11 11:20
+ * @desc:
  */
 public class JDBCTest {
 
